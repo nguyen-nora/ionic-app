@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>booked</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Sân đã đặt</ion-title>
+      <ion-buttons slot="start" (click)= "back()">
+        <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngFor="let booked of bookeds">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{booked.bookingName}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Ngày: {{booked.bookedDate | date: 'dd/MM/yyyy, hh:mm' }}</p>
+          </ion-card-content>
+          <ion-button fill="clear" (click)="deleteBooked(booked)">
+            Huỷ đặt sân
+          </ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>  
+  </ion-grid>
+</ion-content>

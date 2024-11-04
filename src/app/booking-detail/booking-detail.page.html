@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>booking-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-buttons slot="secondary">
+        <ion-button (click)="editBooking()">
+          <ion-icon slot="icon-only" name="save"></ion-icon>
+        </ion-button>
+        <ion-button (click)="removeBooking()">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title size="medium">Thông tin sân</ion-title>
+      
+    </ion-toolbar>
+  </ion-header>
+  <div *ngIf="booking">
+    <ion-item>
+      <ion-input label="Tên:" type="text" [(ngModel)]="booking.name"></ion-input>
+      <ion-input label="Số:" type="text" [(ngModel)]="booking.phone"></ion-input>
+    </ion-item>
+    <ion-textarea class="text-content" lines="none" [(ngModel)]="booking.description"></ion-textarea>
+    <ion-textarea class="text-address" label="Địa chỉ:" type="text" [(ngModel)]="booking.address"></ion-textarea>
+    <ion-datetime-button datetime="datetime" id="fake-click"></ion-datetime-button>
+  </div>
+  <ion-button expand="block" class="book-button" (click)="addBooked()">Đặt sân</ion-button>
+  <ion-modal trigger="open-modal" [keepContentsMounted]="true" [isOpen]="showCalendar" (didDismiss)="cancelCalendar()">
+    <ng-template>
+      <ion-datetime
+        id="datetime"
+        [showDefaultButtons]="true"
+        doneText="Confirm"
+        cancelText="Cancel"
+        presentation="date-time" 
+        preferWheel="false"
+        locale="vi"
+        (ionChange)="onDateChange($event)"
+      ></ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ion-content>

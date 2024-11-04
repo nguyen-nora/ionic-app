@@ -1,0 +1,21 @@
+<ion-app>
+  <ion-menu side="start" menuId="first" contentId="sideNav">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Home</ion-label>
+          <ion-router-link routerLink="/home" routerDirection="root"></ion-router-link>
+        </ion-item>
+        <ion-item (click)="logout()">
+          <ion-label>Đăng xuất</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="sideNav"></ion-router-outlet>
+</ion-app>
